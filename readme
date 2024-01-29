@@ -1,0 +1,49 @@
+a React application that manages a todo list. Let's go through the code and explain each part:
+
+
+1. TodoApp class component: This is the main component of the application. It manages the state for the list of tasks (this.state.tasks) 
+and contains the handleSubmit and handleDelete methods.
+
+2. state property: The state property is initialized with an object that has a single property tasks, 
+which is an array containing some initial tasks.
+
+3. handleSubmit method: This method is responsible for handling the form submission when a new task is added. 
+It takes the task as a parameter and updates the state by adding the new task to the existing tasks array using the spread operator.
+
+4. handleDelete method: This method is used to remove a task from the state based on its index. 
+It creates a new array (newArr) using the spread operator and removes the task at the specified index using the splice method. Finally, it updates the state with the new array.
+
+5. render method: This method returns the JSX that will be rendered to the DOM. 
+It includes a <SubmitForm> component and a <TodoList> component. The SubmitForm component is responsible for rendering
+     the form to add new tasks, while the TodoList component displays the list of tasks.
+
+6. SubmitForm class component: This component represents the form for adding new tasks. 
+It manages the state for the input field value (this.state.item) and includes a handleSubmit method to handle form submission. 
+When the form is submitted, it prevents the default form submission behavior, checks if the input field is empty, and calls 
+the onFormSubmit prop function with the task as an argument. It also clears the input field by setting the state of item to an 
+empty string.
+
+7. TodoList functional component: This component receives props containing the tasks array and the onDelete function. 
+It maps over the tasks array and creates a <Todo> component for each task. The onDelete function is passed to each <Todo> 
+    component for handling task deletion.
+
+8. Todo functional component: This component represents an individual todo item. It receives props such as the content,
+ id, and onDelete function. It renders the content of the task and a delete button. When the delete button is clicked, 
+ it calls the onDelete function with the task's id.
+
+9. ReactDOM.render: This line of code renders the TodoApp component using the React.createElement function and mounts 
+it to the DOM element with the id "root".
+
+Overall, this code creates a simple todo list application in React with the ability to add and delete tasks. The state 
+is managed in the TodoApp component, and the child components handle rendering and user interactions.
+
+STATE:
+In React, it is not necessary to initialize all variables in the component's state. You can choose to initialize only the variables that you need to track and update within the component.
+
+State is typically used to store component-specific data that can change over time and affect the component's rendering. If there are variables that don't need to be tracked or don't affect the component's rendering, there's no need to include them in the state.
+
+For example, if you have some constants or static data that doesn't change during the component's lifecycle, you don't need to include them in the state. You can simply declare them as regular variables within the component's methods or outside the component's class.
+
+However, if you have data that needs to be updated, rendered, and accessed by different methods within the component, it's recommended to include those variables in the state.
+
+Remember that state should be used judiciously and for the purpose of managing data that affects the component's behavior and rendering. Unnecessary use of state can lead to unnecessary re-renders and increased memory usage.
